@@ -17,6 +17,10 @@ b.screen.lcd.text("that appears on", 0, 20)
 b.screen.lcd.text("screen", 0, 40)
 #time.sleep(2)
 b.screen.lcd.fill(0)
+
+import timeit
+
+start = timeit.timeit()
 """Main starts here"""
 wrong_press = 0
 number_of_trials = 1
@@ -30,6 +34,7 @@ while number_of_trials < 16:
     random_number = random_number % 10
 
     if random_number == 0:
+
         b.screen.lcd.text("UP", 40, 20)
 
     if random_number == 1:
@@ -40,6 +45,7 @@ while number_of_trials < 16:
 
     if random_number == 3:
         b.screen.lcd.text("LEFT", 40, 20)
+
 
     if random_number == 4:
         b.screen.lcd.text("Red", 40, 20)
@@ -60,7 +66,7 @@ while number_of_trials < 16:
         b.screen.lcd.text("Blue", 40, 20)
 
     b.screen.lcd.show()
-    """"Get the user pressed Button"""
+   
     """"print("Button Pushed")"""
     "print(str(user_input))"
     print("random number is ", random_number)
@@ -115,9 +121,10 @@ while number_of_trials < 16:
 
     if random_number == 7:
         if user_input == 0:
+
             """do nothing"""
         elif user_input == 2:
-            "you got it correct"
+            """do nothing"""
         else:
             wrong_press = wrong_press + 1
 
@@ -129,11 +136,15 @@ while number_of_trials < 16:
 
     if random_number == 9:
         if user_input == 1:
+
+
             """do nothing"""
         elif user_input == 3:
-            "do nothing"
+
+            """do nothing"""
         else:
             wrong_press = wrong_press + 1
+
             """blank"""
     b.screen.lcd.fill(0)
     b.screen.show()
@@ -147,3 +158,4 @@ b.screen.lcd.text(str(15-wrong_press), 0, 20)
 b.screen.lcd.text("out of 15", 0, 40)
 b.screen.show()
 print (wrong_press)
+
