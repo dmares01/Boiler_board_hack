@@ -84,21 +84,13 @@ while number_of_trials < 16:
         if user_input != 6:
             wrong_press = wrong_press + 1
     if random_number == 7:
-        if user_input == 0:
-            """do nothing"""
-        elif user_input == 2:
-            """do nothing"""
-        else:
+        if user_input != 0 and user_input != 2:
             wrong_press = wrong_press + 1
     if random_number == 8:
         if user_input != 6:
             wrong_press = wrong_press + 1
     if random_number == 9:
-        if user_input == 1:
-            """do nothing"""
-        elif user_input == 3:
-            """do nothing"""
-        else:
+        if user_input != 1 and user_input != 3:
             wrong_press = wrong_press + 1
     b.screen.lcd.fill(0)
     b.screen.show()
