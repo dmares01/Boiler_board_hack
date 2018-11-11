@@ -28,6 +28,7 @@ while number_of_trials < 16:
     b.screen.lcd.fill(0)
     b.screen.show()
     time.sleep(.5)
+    urandom.seed(time.time())
     random_number = urandom.getrandbits(10)
     random_number = random_number % 10
 
@@ -64,15 +65,9 @@ while number_of_trials < 16:
         b.screen.lcd.text("Blue", 40, 20)
 
     b.screen.lcd.show()
-   
-    """"print("Button Pushed")"""
-    "print(str(user_input))"
-    print("random number is ", random_number)
-    print("Number of wrong presses = ", wrong_press)
-    """Time to enter response"""
+
     time.sleep(1)
-    user_input = b.irq.get_pressed_button()
-    """Now we check for validity"""
+    user_input = b.irq.get_pressed_button() 
     if user_input is None:
         user_input = 100
     if random_number == 0:
