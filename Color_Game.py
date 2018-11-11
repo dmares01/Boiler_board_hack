@@ -2,21 +2,27 @@ from boilerboard import Boilerboard
 import time
 import urandom
 
-
 b = Boilerboard()
+button_press = None
 b.screen.lcd.text("Welcome to the", 0, 0)
-b.screen.lcd.text("Color Game", 0, 15)
-b.screen.lcd.text("Created by SK", 0, 35)
-b.screen.lcd.text("and DM", 0, 50)
+b.screen.lcd.text("Color Game", 25, 15)
 b.screen.lcd.show()
-time.sleep(1)
+time.sleep(1.5)
 b.screen.lcd.fill(0)
 b.screen.lcd.text("Press the button", 0, 0)
 b.screen.lcd.text("that appears on", 0, 15)
 b.screen.lcd.text("screen", 30, 30)
 b.screen.lcd.show()
 time.sleep(2)
+while button_press is None:
+    b.screen.lcd.fill(0)
+    b.screen.lcd.text("Press any button", 0, 0)
+    b.screen.lcd.text("to start", 0, 15)
+    b.screen.lcd.show()
+    button_press = b.irq.get_pressed_button()
+
 b.screen.lcd.fill(0)
+urandom.seed(time.time())
 time_start = time.time()
 wrong_press = 0
 number_of_trials = 1
@@ -28,23 +34,21 @@ while number_of_trials < 16:
     b.screen.lcd.fill(0)
     b.screen.show()
     time.sleep(.5)
-    urandom.seed(time.time())
     random_number = urandom.getrandbits(10)
     random_number = random_number % 10
 
     if random_number == 0:
 
-        b.screen.lcd.text("UP", 40, 20)
+        b.screen.lcd.text("Up", 40, 20)
 
     if random_number == 1:
-        b.screen.lcd.text("RIGHT", 40, 20)
+        b.screen.lcd.text("Right", 40, 20)
 
     if random_number == 2:
-        b.screen.lcd.text("DOWN", 40, 20)
+        b.screen.lcd.text("Down", 40, 20)
 
     if random_number == 3:
-        b.screen.lcd.text("LEFT", 40, 20)
-
+        b.screen.lcd.text("Left", 40, 20)
 
     if random_number == 4:
         b.screen.lcd.text("Red", 40, 20)
@@ -67,7 +71,7 @@ while number_of_trials < 16:
     b.screen.lcd.show()
 
     time.sleep(1)
-    user_input = b.irq.get_pressed_button() 
+    user_input = b.irq.get_pressed_button()
     if user_input is None:
         user_input = 100
     if random_number == 0:
@@ -129,11 +133,8 @@ while number_of_trials < 16:
 
     if random_number == 9:
         if user_input == 1:
-
-
             """do nothing"""
         elif user_input == 3:
-
             """do nothing"""
         else:
             wrong_press = wrong_press + 1
@@ -144,8 +145,6 @@ while number_of_trials < 16:
     number_of_trials = number_of_trials + 1
 
 time_end = time.time()
-print(time_start)
-print(time_end)
 time_score = (time_end - time_start)
 button = None
 while button is None:
