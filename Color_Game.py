@@ -1,4 +1,3 @@
-"""start up code needed here"""
 from boilerboard import Boilerboard
 import time
 import urandom
@@ -10,18 +9,15 @@ b.screen.lcd.text("Color Game", 0, 15)
 b.screen.lcd.text("Created by SK", 0, 35)
 b.screen.lcd.text("and DM", 0, 50)
 b.screen.lcd.show()
-#time.sleep(1.5)
+time.sleep(1)
 b.screen.lcd.fill(0)
 b.screen.lcd.text("Press the button", 0, 0)
-b.screen.lcd.text("that appears on", 0, 20)
-b.screen.lcd.text("screen", 0, 40)
-#time.sleep(2)
+b.screen.lcd.text("that appears on", 0, 15)
+b.screen.lcd.text("screen", 30, 30)
+b.screen.lcd.show()
+time.sleep(2)
 b.screen.lcd.fill(0)
-
-import timeit
-
-start = timeit.timeit()
-"""Main starts here"""
+time_start = time.time()
 wrong_press = 0
 number_of_trials = 1
 while number_of_trials < 16:
@@ -30,6 +26,8 @@ while number_of_trials < 16:
     b.screen.show()
     time.sleep(.5)
     b.screen.lcd.fill(0)
+    b.screen.show()
+    time.sleep(.5)
     random_number = urandom.getrandbits(10)
     random_number = random_number % 10
 
@@ -145,17 +143,33 @@ while number_of_trials < 16:
         else:
             wrong_press = wrong_press + 1
 
-            """blank"""
     b.screen.lcd.fill(0)
     b.screen.show()
     time.sleep(.5)
-
-    """\/This goes at the very end of the loop \/"""
     number_of_trials = number_of_trials + 1
+
+time_end = time.time()
+print(time_start)
+print(time_end)
+time_score = (time_end - time_start)
+button = None
+while button is None:
+    b.screen.lcd.fill(0)
+    b.screen.lcd.text("Your score is ", 0, 0)
+    b.screen.lcd.text(str(15-wrong_press), 0, 20)
+    b.screen.lcd.text("out of 15", 0, 40)
+    b.screen.show()
+    time.sleep(1)
+    b.screen.lcd.fill(0)
+    b.screen.lcd.text("Your time is", 0, 0)
+    b.screen.lcd.text(str(time_score), 0, 20)
+    b.screen.lcd.text("seconds", 0, 40)
+    b.screen.show()
+    time.sleep(1)
+    button = b.irq.get_pressed_button()
 b.screen.lcd.fill(0)
-b.screen.lcd.text("Your score is ", 0, 0)
-b.screen.lcd.text(str(15-wrong_press), 0, 20)
-b.screen.lcd.text("out of 15", 0, 40)
+b.screen.lcd.text("Game Over", 30, 30)
 b.screen.show()
-print (wrong_press)
+
+
 
