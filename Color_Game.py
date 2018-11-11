@@ -1,5 +1,9 @@
 """start up code needed here"""
-print("Hello World")
+from boilerboard import Boilerboad
+import time
+
+b = Boilerboad()
+
 """Main starts here"""
 wrong_press = 0
 number_of_trials = 1
@@ -13,37 +17,38 @@ while number_of_trials < 16:
         random_number = (random.randint(0, 9))
 
     if random_number == 0:
-        print("UP")
+        b.screen.lcd.text("UP", 0, 0)
 
     if random_number == 1:
-        print("RIGHT")
+        b.screen.lcd.text("RIGHT", 0, 0)
 
     if random_number == 2:
-        print("DOWN")
+        b.screen.lcd.text("DOWN", 0, 0)
 
     if random_number == 3:
-        print("LEFT")
+        b.screen.lcd.text("LEFT", 0, 0)
 
     if random_number == 4:
-        print("Red")
+        b.screen.lcd.text("Red", 0, 0)
 
     if random_number == 5:
-        print("B")
+        b.screen.lcd.text("B", 0, 0)
 
     if random_number == 6:
-        print("A")
+        b.screen.lcd.text("A", 0, 0)
 
     if random_number == 7:
-        print("Orange")
+        b.screen.lcd.text("Orange", 0, 0)
 
     if random_number == 8:
-        print("Green")
+        b.screen.lcd.text("Green", 0, 0)
 
     if random_number == 9:
-        print("Blue")
+        b.screen.lcd.text("Blue", 0, 0)
 
-    user_input = 0
-    """Need the users input = user_input"""
+    b.screen.lcd.show()
+    "Get the user pressed Button"
+    user_input = b.irq.get_pressed_button()
 
     """Now we check for validity"""
     if random_number == 0:
@@ -108,7 +113,6 @@ while number_of_trials < 16:
             """blank"""
 
     """\/This goes at the very end of the loop \/"""
-    print(number_of_trials)
     number_of_trials = number_of_trials + 1
 
 
