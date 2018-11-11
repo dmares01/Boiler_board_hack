@@ -58,10 +58,9 @@ while number_of_trials < 16:
     if random_number == 9:
         b.screen.lcd.text("Blue", 40, 20)
     b.screen.lcd.show()
-    time.sleep(1)
-    user_input = b.irq.get_pressed_button()
-    if user_input is None:
-        user_input = 100
+    user_input = None
+    while user_input is None:
+        user_input = b.irq.get_pressed_button()
     if random_number == 0:
         if user_input != 0:
             wrong_press = wrong_press + 1
