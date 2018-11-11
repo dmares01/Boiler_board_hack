@@ -1,5 +1,9 @@
 """start up code needed here"""
-print("Hello World")
+import timeit
+
+start = timeit.timeit()
+
+
 """Main starts here"""
 wrong_press = 0
 number_of_trials = 1
@@ -13,25 +17,25 @@ while number_of_trials < 16:
         random_number = (random.randint(0, 9))
 
     if random_number == 0:
-        print("UP")
+        print("Up")
 
     if random_number == 1:
-        print("RIGHT")
+        print("Right")
 
     if random_number == 2:
-        print("DOWN")
+        print("Down")
 
     if random_number == 3:
-        print("LEFT")
+        print("Left")
 
     if random_number == 4:
         print("Red")
 
     if random_number == 5:
-        print("B")
+        print("B button")
 
     if random_number == 6:
-        print("A")
+        print("A button")
 
     if random_number == 7:
         print("Orange")
@@ -89,7 +93,9 @@ while number_of_trials < 16:
             wrong_press = wrong_press + 1
 
     if random_number == 7:
-        if user_input == 0 or 2:
+        if user_input == 0:
+            """do nothing"""
+        elif user_input == 2:
             """do nothing"""
         else:
             wrong_press = wrong_press + 1
@@ -101,16 +107,17 @@ while number_of_trials < 16:
             wrong_press = wrong_press + 1
 
     if random_number == 9:
-        if user_input == 1 or 3:
+        if user_input == 1:
+            """do nothing"""
+        elif user_input == 3:
             """do nothing"""
         else:
             wrong_press = wrong_press + 1
-            """blank"""
 
     """\/This goes at the very end of the loop \/"""
-    print(number_of_trials)
     number_of_trials = number_of_trials + 1
 
-
+"""This is the closing statements that go to the board"""
+end = timeit.timeit()
+print("Your time is", (end - start), "Seconds")
 print("Your score is ", (15-wrong_press), " out of 15")
-
