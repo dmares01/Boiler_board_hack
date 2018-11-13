@@ -29,10 +29,10 @@ time_score = 0
 while number_of_trials < 16:
     b.screen.lcd.text("Round", 20, 0)
     b.screen.lcd.text(str(number_of_trials), 25, 10)
-    b.screen.show()
+    b.screen.lcd.show()
     time.sleep(.5)
     b.screen.lcd.fill(0)
-    b.screen.show()
+    b.screen.lcd.show()
     time.sleep(.5)
     random_number = urandom.getrandbits(10)
     random_number = random_number % 10
@@ -94,7 +94,7 @@ while number_of_trials < 16:
     time_end = time.time()
     time_score = time_score + (time_end - time_start)
     b.screen.lcd.fill(0)
-    b.screen.show()
+    b.screen.lcd.show()
     time.sleep(.5)
     number_of_trials = number_of_trials + 1
     b.irq.clear_buffer()
@@ -105,18 +105,18 @@ while button is None:
     b.screen.lcd.text("Your score is ", 0, 0)
     b.screen.lcd.text(str(15-wrong_press), 0, 20)
     b.screen.lcd.text("out of 15", 0, 40)
-    b.screen.show()
+    b.screen.lcd.show()
     time.sleep(1)
     b.screen.lcd.fill(0)
     b.screen.lcd.text("Your time is", 0, 0)
     b.screen.lcd.text(str(time_score), 0, 20)
     b.screen.lcd.text("seconds", 0, 40)
-    b.screen.show()
+    b.screen.lcd.show()
     time.sleep(1)
     button = b.irq.get_pressed_button()
 b.screen.lcd.fill(0)
 b.screen.lcd.text("Game Over", 30, 30)
-b.screen.show()
+b.screen.lcd.show()
 
 
 
