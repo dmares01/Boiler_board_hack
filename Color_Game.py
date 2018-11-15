@@ -1,6 +1,7 @@
 from boilerboard import Boilerboard
 import time
 import urandom
+from functions import *
 
 b = Boilerboard()
 button_press = None
@@ -34,63 +35,17 @@ while number_of_trials < 16:
     b.screen.lcd.fill(0)
     b.screen.lcd.show()
     time.sleep(.5)
+    #Create random number
     random_number = urandom.getrandbits(10)
     random_number = random_number % 10
     time_start = time.time()
-    if random_number == 0:
-        b.screen.lcd.text("Up", 40, 20)
-    if random_number == 1:
-        b.screen.lcd.text("Right", 40, 20)
-    if random_number == 2:
-        b.screen.lcd.text("Down", 40, 20)
-    if random_number == 3:
-        b.screen.lcd.text("Left", 40, 20)
-    if random_number == 4:
-        b.screen.lcd.text("Red", 40, 20)
-    if random_number == 5:
-        b.screen.lcd.text("B", 40, 20)
-    if random_number == 6:
-        b.screen.lcd.text("A", 40, 20)
-    if random_number == 7:
-        b.screen.lcd.text("Orange", 40, 20)
-    if random_number == 8:
-        b.screen.lcd.text("Green", 40, 20)
-    if random_number == 9:
-        b.screen.lcd.text("Blue", 40, 20)
-    b.screen.lcd.show()
+
+    screen_info(random_number, b)
     user_input = None
     while user_input is None:
         user_input = b.irq.get_pressed_button()
-    if random_number == 0:
-        if user_input != 0:
-            wrong_press = wrong_press + 1
-    if random_number == 1:
-        if user_input != 1:
-            wrong_press = wrong_press + 1
-    if random_number == 2:
-        if user_input != 2:
-            wrong_press = wrong_press + 1
-    if random_number == 3:
-        if user_input != 3:
-            wrong_press = wrong_press + 1
-    if random_number == 4:
-        if user_input != 5:
-            wrong_press = wrong_press + 1
-    if random_number == 5:
-        if user_input != 5:
-            wrong_press = wrong_press + 1
-    if random_number == 6:
-        if user_input != 6:
-            wrong_press = wrong_press + 1
-    if random_number == 7:
-        if user_input != 0 and user_input != 2:
-            wrong_press = wrong_press + 1
-    if random_number == 8:
-        if user_input != 6:
-            wrong_press = wrong_press + 1
-    if random_number == 9:
-        if user_input != 1 and user_input != 3:
-            wrong_press = wrong_press + 1
+    wrong_press = user_answer(user_input, random_number, wrong_press)
+
     time_end = time.time()
     time_score = time_score + (time_end - time_start)
     b.screen.lcd.fill(0)
@@ -117,6 +72,3 @@ while button is None:
 b.screen.lcd.fill(0)
 b.screen.lcd.text("Game Over", 30, 30)
 b.screen.lcd.show()
-
-
-
