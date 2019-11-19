@@ -1,4 +1,4 @@
-# Boiler_board_hack
+# Boiler Board Hack
 #### Drew Mares & Soren Kremer
 Repository for the 2019 Spring Madhacks Hackathon. For this hackathon we created a project using the provided boiler boards, from one of the sponsors. These boards came with a small LCD screen and 6 buttons sodered on, as well as having the lower level coding done for us. For this project we used micropython and the hardware functionality contained in the boilerboard.py file that comes on each of the boards. 
 
